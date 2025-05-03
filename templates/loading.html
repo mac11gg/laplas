@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block body %}
+<h3 class="text-center">Формується персоналізований план...</h3>
+<div class="spinner"></div>
+<div class="progress-bar-loading"><div class="fill"></div></div>
+<script>setTimeout(()=>location.href='/plan',5000);</script>
+{% endblock %}

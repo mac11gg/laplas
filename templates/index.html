@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% block title %}Згенерувати план{% endblock %}{% block body %}
+<h2 class="text-center">Згенерувати план навчання</h2>
+<form method="post">
+  <label>Мета:</label>
+  <select name="goal" required>
+    {% for tbl in tables %}
+      <option value="{{ tbl }}">{{ tbl.replace('topics_','').capitalize() }}</option>
+    {% endfor %}
+  </select>
+  <label>Рівень підготовки:</label>
+  <select name="level"><option>Початковий</option><option>Середній</option><option>Просунутий</option></select>
+  <label>Термін (днів):</label><input type="number" name="timeframe" value="5" min="1">
+  <button type="submit" class="btn btn-primary">Згенерувати план</button>
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block title %}Згенерований план{% endblock %}{% block body %}
+<h2 class="text-center">Згенерований план</h2>
+<p class="text-center">Термін: {{ today }} – {{ timeframe }} днів</p>
+<table>
+  <tr><th>№</th><th>Тема</th><th>Матеріали</th></tr>
+  {% for row in plan %}
+    <tr><td>{{ row['№'] }}</td><td>{{ row['Тема'] }}</td><td><a href="{{ row['Матеріали'] }}" target="_blank">Веб-стаття</a></td></tr>
+  {% endfor %}
+</table>
+<div class="actions">
+  <a href="/" class="btn btn-secondary">Почати заново</a>
+  <a href="/progress" class="btn btn-secondary">Переглянути прогрес</a>
+</div>
+{% endblock %}

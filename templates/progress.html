@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Профіль прогресу{% endblock %}
+{% block body %}
+<h2 class="text-center">Профіль прогресу</h2>
+<div class="progress-bar"><div class="fill" style="width:{{ percent }}%">{{ percent }}%</div></div>
+<table>
+  <tr><th>№</th><th>Тема</th><th>Статус</th><th>Дія</th></tr>
+  {% for it in items %}
+    <tr>
+      <td>{{ it['№'] }}</td>
+      <td>{{ it['Тема'] }}</td>
+      <td>{{ "Закінчено" if it['Статус']=="done" else "У процесі" }}</td>
+      <td>
+        {% if it['Статус']!="done" %}
+        <form method="post" style="display:inline"><input type="hidden" name="day" value="{{ it['№'] }}">
+        <button type="submit" class="btn btn-primary">Позначити як завершено</button></form>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+<div class="actions">
+  <a href="/" class="btn btn-secondary">Створити новий план</a>
+  <a href="/plan" class="btn btn-secondary">Повернутися до плану</a>
+</div>
+{% endblock %}
